@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        html,
+        body {
+            margin: 0;
+            height: 100%;
+        }
+
+        /* 透视 */
+        body {
+            perspective: 1000px;
+        }
+
+        /* 居中的外包裹 */
+        .wrap {
+            width: 200px;
+            height: 200px;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            margin-top: -100px;
+            margin-left: -100px;
+        }
+
+        /* 一条线 */
+        .line {
+            position: absolute;
+            top: -25px;
+            bottom: -25px;
+            left: 50%;
+            margin-left: -1px;
+            width: 2px;
+            background-color: #fff;
+            transform: rotate(20deg);
+        }
+
+        /* 中间的铁球 */
+        .circle {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            /* 调整合适的倾斜角度 */
+            transform: rotate(20deg);
+            /* 使子元素保持 3D 效果 */
+            transform-style: preserve-3d;
+            /* 选中的动画 */
+            animation: move 10s linear infinite;
+        }
+
+        .circle span {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            background: radial-gradient(circle at 100px 100px, #fff, #333);
+        }
+
+        .circle span:nth-child(1) {
+            transform: rotateY(18deg);
+        }
+
+        .circle span:nth-child(2) {
+            transform: rotateY(36deg);
+        }
+
+        .circle span:nth-child(3) {
+            transform: rotateY(54deg);
+        }
+
+        .circle span:nth-child(4) {
+            transform: rotateY(72deg);
+        }
+
+        .circle span:nth-child(5) {
+            transform: rotateY(90deg);
+        }
+
+        .circle span:nth-child(6) {
+            transform: rotateY(108deg);
+        }
+
+        .circle span:nth-child(7) {
+            transform: rotateY(126deg);
+        }
+
+        .circle span:nth-child(8) {
+            transform: rotateY(144deg);
+        }
+
+        .circle span:nth-child(9) {
+            transform: rotateY(162deg);
+        }
+
+        .circle span:nth-child(10) {
+            transform: rotateY(180deg);
+        }
+
+        /* 半圆框 */
+        .wdow {
+            position: absolute;
+            top: -25px;
+            left: -25px;
+            width: calc(100% + 30px);
+            height: calc(100% + 30px);
+            border: 10px solid #fff;
+            border-color: #fff #fff transparent transparent;
+            border-radius: 50%;
+            /* 围绕 z 轴转一转，使倾斜 */
+            transform: rotate(65deg);
+            box-shadow: 0 0 0 880px #000;
+            opacity: .7;
+        }
+
+        /* 底盘的柱子 */
+        .pillar {
+            position: absolute;
+            bottom: -75px;
+            left: 50%;
+            margin-left: -8px;
+            width: 16px;
+            height: 50px;
+            background-color: #fff;
+        }
+
+        /* 底盘 */
+        .chassis {
+            position: absolute;
+            left: 50%;
+            bottom: -120px;
+            margin-left: -80px;
+            width: 160px;
+            height: 100px;
+            border-radius: 50%;
+            background-color: #fff;
+            transform: rotateX(80deg);
+
+        }
+
+        .chassis::after {
+            content: "";
+            position: absolute;
+            left: 0;
+            bottom: -50px;
+            width: 100%;
+            height: 100px;
+            background-color: #fff;
+            border-bottom-right-radius: 50%;
+            border-bottom-left-radius: 50%;
+            opacity: .7;
+        }
+
+        @keyframes move {
+            100% {
+                transform: rotate(20deg) rotateY(360deg);
+            }
+        }
+
+        video {
+            width: 100%;
+            height: 100%;
+            position: absolute;
+            top: 0;
+            right: 0;
+            bottom: 0;
+            left: 0;
+            /* 使装满盒子，视频可能显示不完整 */
+            object-fit: cover;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- 背景 -->
+    <video src="./v.mp4" autoplay muted loop></video>
+    <!-- 包裹 -->
+    <div class="wrap">
+        <!-- 线 -->
+        <span class="line"></span>
+        <!-- 圆 -->
+        <div class="circle">
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+        <!-- 框 -->
+        <div class="wdow"></div>
+        <!-- 柱 -->
+        <div class="pillar"></div>
+        <!-- 盘 -->
+        <div class="chassis"></div>
+    </div>
+</body>
+
+</html>
